@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Random Walker 1.2</title>
+        
+        <link rel="author" href="humans.txt">
+    </head>
+    <body>
+		<div class="canvas"></div>        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.3.10/p5.min.js"></script>
+        <script>
+
+        	Walker = {
+        		init: function() {
+        			this.x = width/2;
+        			this.y = width/2;
+        		}
+        	};
+
+        	Walker.render = function() {
+        		stroke(0);
+        		point(this.x, this.y);
+        	};
+
+        	Walker.step = function() {
+        		var choice = floor(random(4));
+        		if (choice == 0) {
+        			this.x++;
+        		} else if (choice == 1) {
+        			this.x--;
+        		} else if (choice == 2) {
+        			this.y++;
+        		} else {
+        			this.y--;
+        		}
+        	};
+        
+        	function setup() {
+        		createCanvas(600, 600);
+        		w = Object.create(Walker);
+        		w.init();
+        		background(255);
+        	}
+
+        	function draw() {
+        		w.step();
+        		w.render();
+        	}
+
+        	
+     
+        </script>
+    </body>
+</html>
